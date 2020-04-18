@@ -1,0 +1,52 @@
+﻿<Page x:Class="Quest2.Level5"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Quest2"
+      mc:Ignorable="d" 
+      d:DesignHeight="279" d:DesignWidth="609"
+      Title="Level5">
+
+    <Grid x:Name="MainGrid" Background="White">
+        <TextBlock x:Name="Title" TextAlignment="Center" TextWrapping="WrapWithOverflow" Margin="10,21,10,0" HorizontalAlignment="Center" FontSize="16" Width="589" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" Foreground="#FF091D42" Height="23" Text="Андрею нужно знать курсы валют ниже. Найди и добавь их в ListBox."/>
+
+        <Button x:Name="ClearButton" Content="Очистить" Margin="160,232,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140" Height="36" Background="#e74c3c" Foreground="White" BorderBrush="{x:Null}" FontWeight="Bold" Click="Clear_Button_Click" Cursor="Hand">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="18"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="Level1Button" Content="Готово" Margin="309,232,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140" Height="36" Background="#FF4F62FD" Foreground="White" BorderBrush="{x:Null}" FontWeight="Bold" Click="Level5_Button_Click" Cursor="Hand">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="18"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Grid HorizontalAlignment="Left" Height="172" Margin="10,56,0,0" VerticalAlignment="Top" Width="589" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="Courses" HorizontalAlignment="Left" Height="152" Margin="10,10,0,0" VerticalAlignment="Top" Width="177" FontFamily="Segoe UI Semibold">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Currency}" Width="100" Header="Валюта"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Course}" Header="Курс"/>
+                    </GridView>
+                </ListView.View>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <EventSetter Event="UIElement.PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+            <ListBox x:Name="ListBoxCourses" HorizontalAlignment="Left" Height="152" Margin="10,10,0,0" VerticalAlignment="Top" Width="176" Grid.Column="1"/>
+            <TextBlock x:Name="NeededCourses" TextAlignment="Center" TextWrapping="WrapWithOverflow" Margin="10,10,10,0" HorizontalAlignment="Center" FontSize="16" Width="176" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" Foreground="#FF091D42" Height="152" Grid.Column="2"><Run Text=""/></TextBlock>
+        </Grid>
+
+    </Grid>
+</Page>

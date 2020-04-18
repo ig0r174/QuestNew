@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Timers;
 using System.Windows;
-using System.Windows.Forms;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace Quest2
 {
@@ -10,53 +13,109 @@ namespace Quest2
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool level1Flag = false;
+        private int nowLevel = 0;
+        public static LevelStatus status = new LevelStatus();
 
         public MainWindow()
         {
             InitializeComponent();
-            CloseButton.MouseLeftButtonDown += CloseWindow;
-            WindowBorder.MouseLeftButtonDown += MoveWindow;
-            MyName.Content = Environment.UserName;
-            Window.KeyDown += SetFlag;
-            StartLevel();
+            SetDefaultSettings();
+            StartLevel(1);
         }
 
-        private void SetFlag(object sender, KeyEventArgs e)
+        private void SetDefaultSettings()
         {
-            if (e.KeyCode == Keys.K)
+            MyName.Content = Environment.UserName;
+            CloseButton.MouseLeftButtonDown += CloseWindowClick;
+            WindowBorder.MouseLeftButtonDown += MoveWindow;
+            status.FinishGameEvent += EndGame;
+            status.GoToNextLevelEvent += NextLevel;
+        }
+
+        private void StartLevel(int level)
+        {
+            nowLevel = level;
+            LevelLabel.Content = level + " уровень";
+            Hint.Content = GetHint();
+            GenerateLevel();
+        }
+
+        private void NextLevel(object sender, EventArgs e)
+        {
+            StartLevel(++nowLevel);
+        }
+
+        private void EndGame(object sender, EventArgs e)
+        {
+            FinishGame();
+        }
+
+        private object GetHint()
+        {
+            string hintText;
+            switch (nowLevel)
             {
-                level1Flag = true;
+                case 1:
+                    hintText = "Истина в красном";
+                    break;
+                case 3:
+                    hintText = "Царь всея Руси";
+                    break;
+                case 4:
+                    hintText = "Нужно поковыряться";
+                    break;
+                case 6:
+                    hintText = "Опять поковыряться";
+                    break;
+                default:
+                    hintText = "–";
+                    break;
+            }
+            return hintText;
+        }
+
+        private void GenerateLevel()
+        {
+            try
+            {
+                LevelFrame.Navigate(new System.Uri("Level" + nowLevel + ".xaml", UriKind.RelativeOrAbsolute));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ты прошел последний уровень!");
+                return;
             }
         }
 
-        private void StartLevel()
+        private void ClearBody()
         {
-            
+            Body.Children.Clear();
         }
 
-        private void CloseWindow(object sender, MouseButtonEventArgs e)
+        public void FinishGame()
+        {
+            MessageBox.Show("Game over");
+            CloseWindow();
+        }
+
+        private void CloseWindow()
         {
             this.Close();
         }
+
+        private void CloseWindowClick(object sender, MouseButtonEventArgs e)
+        {
+            CloseWindow();
+        }
+
         private void MoveWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public static void GoToNextLevel()
         {
-            if( !level1Flag)
-            {
-                int maxLeft = Convert.ToInt32(Body.ActualWidth - Level2Button.ActualWidth);
-                int maxTop = Convert.ToInt32(Body.ActualHeight - Level2Button.ActualHeight);
-                Random rand = new Random();
-                Level2Button.Margin = new Thickness(rand.Next(maxLeft), rand.Next(maxTop), 0, 0);
-            } else
-            {
-                MessageBox.Show("NextLevel");
-            }
-            
+            status.SendNextLevelEvent();
         }
     }
 }

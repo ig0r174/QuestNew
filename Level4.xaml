@@ -1,0 +1,49 @@
+﻿<Page x:Class="Quest2.Level4"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Quest2"
+      mc:Ignorable="d" 
+      d:DesignHeight="279" d:DesignWidth="609"
+      Title="Level4">
+
+    <Grid x:Name="MainGrid" Background="White">
+        <TextBlock x:Name="Title" TextAlignment="Center" TextWrapping="WrapWithOverflow" Margin="238,15,7,0" HorizontalAlignment="Center" FontSize="16" Width="364" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" Foreground="#FF091D42" Height="46"><Run Text="Теперь нужно отметить"/><Run Text=", "/><Run Text="какие вещи собрал Джон на своё очень важное дело."/></TextBlock>
+
+        <Border Background="#FF4F62FD" BorderBrush="#FF4F62FD" BorderThickness="15" CornerRadius="20" HorizontalAlignment="Left" Width="221" Height="259" VerticalAlignment="Top" Margin="10,10,0,0">
+            <Grid>
+                <Label Content="Список вещей" Margin="0,7,-5,189" HorizontalAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="14" Foreground="White"/>
+                <StackPanel x:Name="ItemsList" Margin="10,0,10,74" VerticalAlignment="Bottom" Height="115">
+                    <CheckBox x:Name="GunCheckbox" Content="Пистолет" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="171" Foreground="White" FontFamily="Segoe UI Semibold"/>
+                    <CheckBox x:Name="PaperCheckbox" Content="Туалетная бумага" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" Width="171" Foreground="White" FontFamily="Segoe UI Semibold"/>
+                    <CheckBox Content="Бронежилет" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" Width="171" Foreground="White" FontFamily="Segoe UI Semibold"/>
+                    <CheckBox x:Name="CookiesCheckbox" Content="Печенье" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" Width="171" Foreground="White" FontFamily="Segoe UI Semibold"/>
+                    <CheckBox x:Name="KnifeCheckbox" Content="Нож" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" Width="171" Foreground="White" FontFamily="Segoe UI Semibold"/>
+                    <CheckBox Content="Телефон" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" Width="171" Foreground="White" FontFamily="Segoe UI Semibold"/>
+                </StackPanel>
+
+                <StackPanel x:Name="JacketColor" Margin="10,0,113,0" VerticalAlignment="Bottom">
+                    <RadioButton x:Name="Blue" Foreground="White" FontFamily="Segoe UI Semibold" GroupName="Jacket" Content="Синий" IsChecked="True" />
+                    <RadioButton x:Name="Red" Foreground="White" FontFamily="Segoe UI Semibold" GroupName="Jacket" Content="Красный" />
+                    <RadioButton x:Name="Green" Foreground="White" FontFamily="Segoe UI Semibold" GroupName="Jacket" Content="Зеленый" />
+                </StackPanel>
+                <Label Content="Цвет кофты" Margin="46,155,41,41" HorizontalAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="14" Foreground="White"/>
+            </Grid>
+        </Border>
+        <Grid HorizontalAlignment="Left" Height="171" Margin="238,61,0,0" VerticalAlignment="Top" Width="361">
+            <Image HorizontalAlignment="Left" Height="64" Margin="10,10,0,0" VerticalAlignment="Top" Width="64" Source="cookies.png"/>
+            <Image HorizontalAlignment="Left" Height="64" Margin="146,56,0,0" VerticalAlignment="Top" Width="64" Source="knife.png"/>
+            <Image HorizontalAlignment="Left" Height="64" Margin="29,101,0,0" VerticalAlignment="Top" Width="64" Source="gun.png"/>
+            <Image HorizontalAlignment="Left" Height="48" Margin="254,39,0,0" VerticalAlignment="Top" Width="48" Source="paper.png"/>
+            <Image x:Name="MovingImage" MouseDown="Image_MouseDown" MouseMove="Image_MouseMove" HorizontalAlignment="Left" Height="64" Margin="248,28,0,0" VerticalAlignment="Top" Width="64" Source="jacket.png"/>
+        </Grid>
+        <Button x:Name="Level4Button" Content="Готово" Margin="347,233,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140" Height="36" Background="#FF4F62FD" Foreground="White" BorderBrush="{x:Null}" FontWeight="Bold" Click="Level4_Button_Click" Cursor="Hand">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="18"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Page>

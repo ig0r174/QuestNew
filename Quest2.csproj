@@ -35,8 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.11.23.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>packages\HtmlAgilityPack.1.11.23\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +59,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Level1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Level2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Level3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Level4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Level5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Level6.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,6 +91,25 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Level1.xaml.cs">
+      <DependentUpon>Level1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Level2.xaml.cs">
+      <DependentUpon>Level2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Level3.xaml.cs">
+      <DependentUpon>Level3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Level4.xaml.cs">
+      <DependentUpon>Level4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Level5.xaml.cs">
+      <DependentUpon>Level5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Level6.xaml.cs">
+      <DependentUpon>Level6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LevelStatus.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -86,6 +133,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,6 +147,36 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="question_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bomb_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="police_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="police_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="police_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="no_signs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cookies.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="knife.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="jacket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="gun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="paper.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
