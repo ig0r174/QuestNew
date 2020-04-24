@@ -1,0 +1,18 @@
+﻿<Page x:Class="Quest2.Level7"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Quest2"
+      mc:Ignorable="d" 
+      d:DesignHeight="279" d:DesignWidth="609"
+      Title="Level7">
+
+    <Grid Background="#fff">
+        <TreeView x:Name="Tree" HorizontalAlignment="Left" Height="259" Margin="10,10,0,0" VerticalAlignment="Top" Width="285"/>
+        <Grid HorizontalAlignment="Left" Height="259" Margin="314,10,0,0" VerticalAlignment="Top" Width="285">
+            <DatePicker x:Name="Date" SelectedDateChanged="Date_OnSelectedDate" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Center" Width="265" IsTodayHighlighted="False"/>
+        </Grid>
+
+    </Grid>
+</Page>

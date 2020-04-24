@@ -20,7 +20,7 @@ namespace Quest2
         {
             InitializeComponent();
             SetDefaultSettings();
-            StartLevel(1);
+            StartLevel(7);
         }
 
         private void SetDefaultSettings()
@@ -67,6 +67,9 @@ namespace Quest2
                 case 6:
                     hintText = "Опять поковыряться";
                     break;
+                case 7:
+                    hintText = "Эх, снова ковыряться";
+                    break;
                 default:
                     hintText = "–";
                     break;
@@ -76,15 +79,9 @@ namespace Quest2
 
         private void GenerateLevel()
         {
-            try
-            {
+            if(nowLevel <= 7)
                 LevelFrame.Navigate(new System.Uri("Level" + nowLevel + ".xaml", UriKind.RelativeOrAbsolute));
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ты прошел последний уровень!");
-                return;
-            }
+            else MessageBox.Show("Ты прошел последний уровень!");
         }
 
         private void ClearBody()
